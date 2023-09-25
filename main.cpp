@@ -1,6 +1,5 @@
 /************************************************************************/
 /* Author     : Niranjan Ravi                                           */
-/* Title      : Nash homework                                           */
 /* Description: Program to handle information about pattern calls and   */
 /*              display the patterns to the user based on queries       */
 /************************************************************************/
