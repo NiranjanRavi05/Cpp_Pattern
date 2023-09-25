@@ -278,18 +278,38 @@ const vector<Pattern> CheckFlag::queryMatch(const bool& queryPatternCall) const{
     return matchingPatterns;
 }
 
+/************************************************************************/
+/* Class         : QueryHandler                                         */
+/* Arguments     : None                                                 */
+/* Description   : Default constructor for QueryHandler class           */
+/************************************************************************/
 QueryHandler::QueryHandler():patterns(new Pattern[PATTERN_SIZE]()){
 }
 
+/************************************************************************/
+/* Class         : QueryHandler                                         */
+/* Arguments     : Pattern *patterns                                    */
+/* Description   : Parameterized constructor for QueryHandler class     */
+/************************************************************************/
 QueryHandler::QueryHandler(Pattern *patterns):patterns(patterns){
 }
 
+/************************************************************************/
+/* Class         : QueryHandler                                         */
+/* Arguments     : None                                                 */
+/* Description   : Destructor for QueryHandler class                    */
+/************************************************************************/
 QueryHandler::~QueryHandler(){
     if(patterns != nullptr)
         delete[] patterns;
         patterns = nullptr;
 }
 
+/************************************************************************/
+/* Class         : QueryHandler                                         */
+/* Arguments     : const QueryHandler& queryHandler                     */
+/* Description   : Copy constructor for QueryHandler class              */
+/************************************************************************/
 QueryHandler::QueryHandler(const QueryHandler& queryHandler){
     patterns = new Pattern[PATTERN_SIZE];
     for (int i = 0; i < PATTERN_SIZE; ++i) {
@@ -297,11 +317,23 @@ QueryHandler::QueryHandler(const QueryHandler& queryHandler){
     }
 }
 
+
+/************************************************************************/
+/* Class         : QueryHandler                                         */
+/* Arguments     : QueryHandler&& queryHandler                          */
+/* Description   : Move constructor for QueryHandler class              */
+/************************************************************************/
 QueryHandler::QueryHandler(QueryHandler&& queryHandler) noexcept {
     patterns = queryHandler.patterns;
     queryHandler.patterns = nullptr;
 }
 
+/************************************************************************/
+/* Class         : QueryHandler                                         */
+/* Arguments     : const QueryHandler& queryHandler                     */
+/* Description   : Copy assignment operator overload for QueryHandler   */
+/*                 class                                                */
+/************************************************************************/
 QueryHandler & QueryHandler::operator = (const QueryHandler& queryHandler){
     if(this != &queryHandler){
         delete[] patterns;
@@ -313,6 +345,12 @@ QueryHandler & QueryHandler::operator = (const QueryHandler& queryHandler){
     return *this;
 }
 
+/************************************************************************/
+/* Class         : QueryHandler                                         */
+/* Arguments     : QueryHandler&& queryHandler                          */
+/* Description   : Move assignment operator overload for QueryHandler   */
+/*                 class                                                */
+/************************************************************************/
 QueryHandler & QueryHandler::operator = (QueryHandler&& queryHandler) noexcept {
     if(this != &queryHandler){
         delete[] patterns;
